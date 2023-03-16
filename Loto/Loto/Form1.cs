@@ -17,6 +17,7 @@ namespace ExamenLoto
         // Estos arrays se usan para recorrer de manera más sencilla los controles
         private TextBox[] combinacion = new TextBox[6]; 
         private TextBox[] ganadora = new TextBox[6];
+        int[] numeros = new int[6];
         public Form1()
         {
             InitializeComponent();
@@ -43,11 +44,11 @@ namespace ExamenLoto
 
         private void btValidar_Click(object sender, EventArgs e)
         {
-            int[] nums = new int[6];    
+                
             for (int i = 0; i < 6; i++)
-                nums[i] = Convert.ToInt32(combinacion[i].Text);
-            miLoto = new loto(nums);
-            if (miLoto.ok)
+                numeros[i] = Convert.ToInt32(combinacion[i].Text);
+            miLoto = new loto(numeros);
+            if (miLoto.Ok)
                 MessageBox.Show("Combinación válida");
             else
                 MessageBox.Show("Combinación no válida");
@@ -60,13 +61,13 @@ namespace ExamenLoto
 
         private void btComprobar_Click(object sender, EventArgs e)
         {
-            int[] numeros = new int[6];
+            
             for (int i = 0; i < 6; i++)
                 numeros[i] = Convert.ToInt32(combinacion[i].Text);
             miLoto = new loto(numeros);
-            if (miLoto.ok)
+            if (miLoto.Ok)
             {
-                numeros = new int[6];
+               
                 for (int i = 0; i < 6; i++)
                     numeros[i] = Convert.ToInt32(combinacion[i].Text);
                 int aciertos = miGanadora.comprobar(numeros);

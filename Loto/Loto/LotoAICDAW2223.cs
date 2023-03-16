@@ -7,22 +7,30 @@ namespace LotoClassNS
     public class loto
     {
         // definición de constantes
-        public const int MAX_NUMEROS = 6;
-        public const int NUMERO_MENOR = 1;
-        public const int NUMERO_MAYOR = 49;
+        private const int mAX_NUMEROS = 6;
+        private const int nUMERO_MENOR = 1;
+        private const int nUMERO_MAYOR = 49;
 
         // numeros de la combinación
         private int[] numeros = new int[MAX_NUMEROS];
         // combinación válida (si es aleatoria, siempre es válida, si no, no tiene porqué)
-        public bool ok = false;
-       
+        private bool ok = false;
+
         public int[] Numeros { 
             get => numeros; 
             set => numeros = value; 
         }
 
+        public static int MAX_NUMEROS => mAX_NUMEROS;
 
-        
+        public static int NUMERO_MENOR => nUMERO_MENOR;
+
+        public static int NUMERO_MAYOR => nUMERO_MAYOR;
+
+        public bool Ok { get => ok; set => ok = value; }
+
+
+
         /// <summary>
         /// Constructor vacío, que genera una combinación aleatoria correcta.
         /// </summary>
@@ -50,7 +58,7 @@ namespace LotoClassNS
                 }
             } while (i<MAX_NUMEROS);
 
-            ok=true;
+            Ok=true;
         }
 
       
@@ -71,17 +79,17 @@ namespace LotoClassNS
                     if (i==j)
                         Numeros[i]=misNumeros[i]; 
                     else {
-                        ok=false;
+                        Ok=false;
                         return;
                     }
                 }
                 else
                 {
                     // La combinación no es válida, terminamos
-                    ok = false;     
+                    Ok = false;     
                     return;
                 }
-	    ok=true;
+	    Ok=true;
         }
 
         
