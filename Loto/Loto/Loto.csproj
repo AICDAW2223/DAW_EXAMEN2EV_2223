@@ -52,8 +52,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loto.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="LotoAICDAW2223.cs" />
+    <Compile Include="Examen2EVAICDAW2223.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

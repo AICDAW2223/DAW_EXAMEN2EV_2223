@@ -14,7 +14,8 @@ namespace ExamenLoto
     public partial class Form1 : Form
     {
         public loto miLoto, miGanadora;
-        private TextBox[] combinacion = new TextBox[6]; // Estos arrays se usan para recorrer de manera más sencilla los controles
+        // Estos arrays se usan para recorrer de manera más sencilla los controles
+        private TextBox[] combinacion = new TextBox[6]; 
         private TextBox[] ganadora = new TextBox[6];
         public Form1()
         {
@@ -25,17 +26,19 @@ namespace ExamenLoto
             combinacion[3] = txtNumero4; ganadora[3] = txtGanadora4;
             combinacion[4] = txtNumero5; ganadora[4] = txtGanadora5;
             combinacion[5] = txtNumero6; ganadora[5] = txtGanadora6;
-            miGanadora = new loto(); // generamos la combinación ganadora
+            // generamos la combinación ganadora
+            miGanadora = new loto(); 
             for (int i = 0; i < 6; i++)
-                ganadora[i].Text = Convert.ToString(miGanadora.Nums[i]);
+                ganadora[i].Text = Convert.ToString(miGanadora.Numeros[i]);
 
         }
 
         private void btGenerar_Click(object sender, EventArgs e)
         {
-            miLoto = new loto(); // usamos constructor vacío, se genera combinación aleatoria
+            // usamos constructor vacío, se genera combinación aleatoria
+            miLoto = new loto();
             for ( int i=0; i<6; i++ )
-                combinacion[i].Text = Convert.ToString(miLoto.Nums[i]);
+                combinacion[i].Text = Convert.ToString(miLoto.Numeros[i]);
         }
 
         private void btValidar_Click(object sender, EventArgs e)
@@ -50,18 +53,23 @@ namespace ExamenLoto
                 MessageBox.Show("Combinación no válida");
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btComprobar_Click(object sender, EventArgs e)
         {
-            int[] nums = new int[6];
+            int[] numeros = new int[6];
             for (int i = 0; i < 6; i++)
-                nums[i] = Convert.ToInt32(combinacion[i].Text);
-            miLoto = new loto(nums);
+                numeros[i] = Convert.ToInt32(combinacion[i].Text);
+            miLoto = new loto(numeros);
             if (miLoto.ok)
             {
-                nums = new int[6];
+                numeros = new int[6];
                 for (int i = 0; i < 6; i++)
-                    nums[i] = Convert.ToInt32(combinacion[i].Text);
-                int aciertos = miGanadora.comprobar(nums);
+                    numeros[i] = Convert.ToInt32(combinacion[i].Text);
+                int aciertos = miGanadora.comprobar(numeros);
                 if (aciertos < 3)
                     MessageBox.Show("No ha resultado premiada");
                 else
